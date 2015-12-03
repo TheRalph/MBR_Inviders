@@ -1,4 +1,4 @@
-MBR_NAME=myBoot.mbr
+MBR_NAME=myBoot_bs.bin
 
 all: $(MBR_NAME)
 

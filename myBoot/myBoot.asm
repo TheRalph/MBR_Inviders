@@ -8,6 +8,7 @@
 ;%define USE_SWAP_BUFFER
 ;%define USE_PRINTSTR
 ;%define USE_PRINTINT
+;%define MAKE_FULL_MBR
 
 %include '../mydrawM.inc'
 
@@ -24,9 +25,12 @@
 %include '../mainInva.inc'
 %include '../mydrawF.inc'
 
+%ifdef MAKE_FULL_MBR
 ;--- NOP jusqu'a 510 ---
-;    times 510-($-$$) db 0x90 ; NOP
+    times 510-($-$$) db 0x90 ; NOP
     dw 0xAA55
+%else
+;--- NOP jusqu'a 446 ---
+    times 446-($-$$) db 0x90 ; NOP
+%endif
 
-; 414
-; partitions : 446
